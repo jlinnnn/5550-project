@@ -1,0 +1,21 @@
+Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million)
+Andrea,STS,May-19,35,1006,,
+Barry,H,Jul-19,65,993,,600
+Three,TD,Jul-19,30,1013,,
+Chantal,TS,Aug-19,35,1007,,
+Dorian,MH,Aug-19,160,910,> 200,1600
+Erin,TS,Aug-19,35,1002,,
+Fernand,TS,Sep-19,45,1000,1,
+Gabrielle,TS,Sep-19,55,995,,
+Humberto,MH,Sep-19,110,950,2,
+Jerry,H,Sep-19,90,976,,
+Imelda,TS,Sep-19,40,1003,5,5000
+Karen,TS,Sep-19,40,1003,,
+Lorenzo,MH,Sep-19,140,925,19,
+Melissa,TS,Oct-19,55,994,,
+Fifteen,TD,Oct-19,30,1006,,
+Nestor,TS,Oct-19,50,996,,
+Olga,TS,Oct-19,40,998,,400
+Pablo,H,Oct-19,70,977,,
+Rebekah,STS,Oct-19,45,982,,
+Sebastien,TS,Nov-19,60,991,,

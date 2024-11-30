@@ -1,0 +1,21 @@
+---
+title: "Hurricane Cleaning"
+author: “Josh Lin”
+format: 
+  html:
+    embed-resources: true
+    code-fold: true
+---
+
+```{r}
+library(tidyverse)
+
+hurr_2017 <- read.csv("../raw_data/2017_hist_hurr.csv")
+# head(hurr_2017)
+hurr_2018 <- read.csv("../raw_data/2017_hist_hurr.csv")
+hurr_2019 <- read.csv("../raw_data/2017_hist_hurr.csv")
+hurr_2020 <- read.csv("../raw_data/2017_hist_hurr.csv")
+hurr_2021 <- read.csv("../raw_data/2017_hist_hurr.csv")
+hurr_2022 <- read.csv("../raw_data/2017_hist_hurr.csv")
+hurr_2023 <- read.csv("../raw_data/2017_hist_hurr.csv")
+```

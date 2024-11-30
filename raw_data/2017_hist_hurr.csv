@@ -1,0 +1,19 @@
+Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million)
+Arlene,TS,Apr-17,45,990,,
+Bret,TS,Jun-17,40,1007,,
+Cindy,TS,Jun-17,50,991,1,
+Four,TD,Jul-17,25,1009,,
+Don,TS,Jul-17,45,1005,,
+Emily,TS,Jul-17,50,1001,,10
+Franklin,H,Aug-17,75,981,,
+Gert,H,Aug-17,95,962,,
+Harvey,MH,Aug-17,115,937,68,1125
+Irma,MH,Sep-17,155,914,47,50000
+Jose,MH,Sep-17,135,938,,
+Katia,H,Sep-17,90,972,2,
+Lee,MH,Sep-17,100,962,,
+Maria,MH,Sep-17,150,908,110,90000
+Nate,H,Oct-17,80,981,45,225
+Ophelia,MH,Oct-17,100,959,2,
+Philippe,TS,Oct-17,35,1000,,
+Rina,TS,Nov-17,50,991,,

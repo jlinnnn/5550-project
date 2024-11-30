@@ -1,0 +1,17 @@
+Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million)
+Alex,TS,Jun-22,60,984,4,
+Bonnie,MH,Jul-22,100,964,5,
+Colin,TS,Jul-22,35,1011,1,
+Danielle,H,Sep-22,75,972,,
+Earl,H,Sep-22,95,948,2,
+Fiona,MH,Sep-22,120,931,7,2500
+Gaston,TS,Sep-22,55,994,,
+Hermine,TS,Sep-22,35,1003,,
+Ian,MH,Sep-22,140,937,66,112900
+Eleven,TD,Sep-22,30,1008,,
+Twelve,TD,Oct-22,30,1007,,
+Julia,H,Oct-22,75,982,35,
+Karl,TS,Oct-22,50,997,3,
+Lisa,H,Nov-22,80,985,,
+Martin,H,Nov-22,75,965,,
+Nicole,H,Nov-22,65,980,,1000
