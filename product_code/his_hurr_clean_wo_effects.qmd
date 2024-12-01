@@ -1,0 +1,74 @@
+---
+title: "Hurricane Cleaning"
+author: “Josh Lin”
+format: 
+  html:
+    embed-resources: true
+    code-fold: true
+---
+
+```{r}
+library(tidyverse)
+
+hurr_2017 <- read.csv("../raw_data/2017_hist_hurr.csv")
+# head(hurr_2017)
+hurr_2018 <- read.csv("../raw_data/2018_hist_hurr.csv")
+hurr_2019 <- read.csv("../raw_data/2019_hist_hurr.csv")
+hurr_2020 <- read.csv("../raw_data/2020_hist_hurr.csv")
+hurr_2021 <- read.csv("../raw_data/2021_hist_hurr.csv")
+hurr_2022 <- read.csv("../raw_data/2022_hist_hurr.csv")
+hurr_2023 <- read.csv("../raw_data/2023_hist_hurr.csv")
+
+common_colnames <- c("Storm_Names", "Class_Category", "Dates", "Max_Winds(kt.)", "Min_Pressure(mb.)", "Direct_Death", "US_Damage(million)", "200-850_hPA Shear(kt.)", "Sea_Surface_Temp(Celsius)", "Humidity(%)")
+
+names(hurr_2017) <- common_colnames
+names(hurr_2018) <- common_colnames
+names(hurr_2019) <- common_colnames
+names(hurr_2020) <- common_colnames
+names(hurr_2021) <- common_colnames
+names(hurr_2022) <- common_colnames
+names(hurr_2023) <- common_colnames
+
+hurr_2017$Direct_Death <- NULL
+hurr_2017$`US_Damage(million)` <- NULL
+
+hurr_2018$Direct_Death <- NULL
+hurr_2018$`US_Damage(million)` <- NULL
+
+hurr_2019$Direct_Death <- NULL
+hurr_2019$`US_Damage(million)` <- NULL
+
+hurr_2020$Direct_Death <- NULL
+hurr_2020$`US_Damage(million)` <- NULL
+
+hurr_2021$Direct_Death <- NULL
+hurr_2021$`US_Damage(million)` <- NULL
+
+hurr_2022$Direct_Death <- NULL
+hurr_2022$`US_Damage(million)` <- NULL
+
+hurr_2023$Direct_Death <- NULL
+hurr_2023$`US_Damage(million)` <- NULL
+
+# print(hurr_2017)
+
+all_hurricanes <- bind_rows(
+    mutate(hurr_2017, Year = 2017),
+    mutate(hurr_2018, Year = 2018),
+    mutate(hurr_2019, Year = 2019),
+    mutate(hurr_2020, Year = 2020),
+    mutate(hurr_2021, Year = 2021),
+    mutate(hurr_2022, Year = 2022),
+    mutate(hurr_2023, Year = 2023)
+)
+
+all_hurricanes <- all_hurricanes %>%
+    mutate(Months = sub("-.*", "", Dates))
+
+all_hurricanes$Dates <- NULL
+
+dim(all_hurricanes)
+# tail(all_hurricanes)
+
+write.csv(all_hurricanes, "../clean_data/all_hurricane_wo_effects.csv", row.names = FALSE)
+```

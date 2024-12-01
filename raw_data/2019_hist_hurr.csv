@@ -1,21 +1,21 @@
-Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million)
-Andrea,STS,May-19,35,1006,,
-Barry,H,Jul-19,65,993,,600
-Three,TD,Jul-19,30,1013,,
-Chantal,TS,Aug-19,35,1007,,
-Dorian,MH,Aug-19,160,910,> 200,1600
-Erin,TS,Aug-19,35,1002,,
-Fernand,TS,Sep-19,45,1000,1,
-Gabrielle,TS,Sep-19,55,995,,
-Humberto,MH,Sep-19,110,950,2,
-Jerry,H,Sep-19,90,976,,
-Imelda,TS,Sep-19,40,1003,5,5000
-Karen,TS,Sep-19,40,1003,,
-Lorenzo,MH,Sep-19,140,925,19,
-Melissa,TS,Oct-19,55,994,,
-Fifteen,TD,Oct-19,30,1006,,
-Nestor,TS,Oct-19,50,996,,
-Olga,TS,Oct-19,40,998,,400
-Pablo,H,Oct-19,70,977,,
-Rebekah,STS,Oct-19,45,982,,
-Sebastien,TS,Nov-19,60,991,,
+Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million),200-850_hPA_Shear(kt),Sea_Surface_Temp(Celsius) ,700-500_hPa_Humidity(%)
+Andrea,STS,May-19,35,1006,,,7,23,50
+Barry,H,Jul-19,65,993,,600,20,29.5,50
+Three,TD,Jul-19,30,1013,,,7,29.5,65
+Chantal,TS,Aug-19,35,1007,,,13,26,35
+Dorian,MH,Aug-19,160,910,> 200,1600,13,30,45
+Erin,TS,Aug-19,35,1002,,,15,27.5,45
+Fernand,TS,Sep-19,45,1000,1,,5,27,60
+Gabrielle,TS,Sep-19,55,995,,,37,29,30
+Humberto,MH,Sep-19,110,950,2,,30,25,40
+Jerry,H,Sep-19,90,976,,,25,26,40
+Imelda,TS,Sep-19,40,1003,5,5000,43,30,50
+Karen,TS,Sep-19,40,1003,,,15,27.5,50
+Lorenzo,MH,Sep-19,140,925,19,,45,28,35
+Melissa,TS,Oct-19,55,994,,,33,27.5,35
+Fifteen,TD,Oct-19,30,1006,,,30,26,50
+Nestor,TS,Oct-19,50,996,,,43,28,50
+Olga,TS,Oct-19,40,998,,400,33,25.5,55
+Pablo,H,Oct-19,70,977,,,30,18,40
+Rebekah,STS,Oct-19,45,982,,,23,21,30
+Sebastien,TS,Nov-19,60,991,,,20,28,45

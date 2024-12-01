@@ -1,17 +1,17 @@
-Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million)
-Alberto,TS,May-18,55,990,18,125
-Beryl,H,Jul-18,70,991,,
-Chris,H,Jul-18,90,969,1,
-Debby,TS,Aug-18,45,998,,
-Ernesto,TS,Aug-18,40,1003,,
-Florence,MH,Sep-18,130,937,22,24000
-Gordon,TS,Sep-18,60,996,1,225
-Helene,H,Sep-18,95,967,,
-Isaac,H,Sep-18,65,995,,
-Joyce,TS,Sep-18,45,995,,
-Eleven,TD,Sep-18,30,1007,,
-Kirk,TS,Sep-18,55,998,,
-Leslie,H,Oct-18,80,968,,
-Michael,MH,Oct-18,140,919,16,25000
-Nadine,TS,Oct-18,55,995,,
-Oscar,H,Oct-18,95,966,,
+Storm Name,Class,Dates,Max. Winds (kt),Min. Pressure (mb),Direct Death,U.S. Damage ($ million),200-850_hPA_Shear(kt),Sea_Surface_Temp(Celsius) ,700-500_hPa_Humidity(%)
+Alberto,TS,May-18,55,990,18,125,10,28,70
+Beryl,H,Jul-18,70,991,,,13,25.5,55
+Chris,H,Jul-18,90,969,1,,35,23,45
+Debby,TS,Aug-18,45,998,,,10,23.5,45
+Ernesto,TS,Aug-18,40,1003,,,30,25,50
+Florence,MH,Sep-18,130,937,22,24000,20,29,50
+Gordon,TS,Sep-18,60,996,1,225,37,30,70
+Helene,H,Sep-18,95,967,,,25,30,50
+Isaac,H,Sep-18,65,995,,,10,26.5,60
+Joyce,TS,Sep-18,45,995,,,37,25,20
+Eleven,TD,Sep-18,30,1007,,,35,30,45
+Kirk,TS,Sep-18,55,998,,,35,28.5,70
+Leslie,H,Oct-18,80,968,,,25,26,40
+Michael,MH,Oct-18,140,919,16,25000,43,28,35
+Nadine,TS,Oct-18,55,995,,,40,27,60
+Oscar,H,Oct-18,95,966,,,27,24,50
