@@ -67,8 +67,10 @@ all_hurricanes <- all_hurricanes %>%
 
 all_hurricanes$Dates <- NULL
 
-dim(all_hurricanes)
-# tail(all_hurricanes)
+all_hurricanes <- na.omit(all_hurricanes)
+
+# dim(all_hurricanes)
+head(all_hurricanes)
 
 write.csv(all_hurricanes, "../clean_data/all_hurricane_wo_effects.csv", row.names = FALSE)
 ```

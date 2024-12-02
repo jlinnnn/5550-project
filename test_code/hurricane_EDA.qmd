@@ -1,0 +1,71 @@
+---
+title: "Hurricane EDA"
+author: “Josh Lin”
+format: 
+  html:
+    embed-resources: true
+    code-fold: true
+---
+
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+
+hurricane_df <- read.csv("../clean_data/all_hurricane_wo_effects.csv")
+
+head(hurricane_df)
+colnames(hurricane_df)
+```
+# Visualize Distributions
+```{r}
+hurr_cat <- c(
+    "H" = "Hurricane",
+    "MH" = "Major Hurricane",
+    "SS" = "Subtropical Storm",
+    "STS" = "Severe Tropical Storm",
+    "TD" = "Tropical Depression",
+    "TS" = "Tropical Storm"
+)
+
+# Replace abbreviations in the column with full names
+hurricane_df$Hurricane_Category <- hurr_cat[hurricane_df$Class_Category]
+
+# Histogram for Max Winds
+ggplot(hurricane_df, aes(x = Max_Winds.kt..)) +
+    geom_histogram(binwidth = 5, fill = "blue", color = "black", bins = 50) +
+    labs(title = "Distribution of Maximum Winds", x = "Max Winds (kt)", y = "Frequency") +
+    theme_minimal()
+
+# Histogram for Min Pressure
+ggplot(hurricane_df, aes(x = Min_Pressure.mb..)) +
+    geom_histogram(binwidth = 5, fill = "blue", color = "black", bins = 50) +
+    labs(title = "Distribution of Minimum Pressure", x = "Min Pressure (mb)", y = "Frequency") +
+    theme_minimal()
+
+# Boxplot for Min Pressure by Class Category with Legend and Colors
+ggplot(hurricane_df, aes(x = Hurricane_Category, y = Min_Pressure.mb.., fill = Class_Category)) +
+    geom_boxplot(color = "black") + # Black outlines for clarity
+    labs(
+        title = "Boxplot of Minimum Pressure by Class Category",
+        x = "Storm Category",
+        y = "Min Pressure (mb)",
+        fill = "Storm Category"
+    ) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Density plot for Sea Surface Temperature
+ggplot(hurricane_df, aes(x = Min_Pressure.mb..)) +
+    geom_density(fill = "green", alpha = 0.5) +
+    labs(title = "Density Plot of Sea Surface Temperature", x = "Sea Surface Temperature (°C)", y = "Density")
+
+# Bar plot for Class_Category
+ggplot(hurricane_df, aes(x = Hurricane_Category)) +
+    geom_bar(fill = "orange", color = "black") +
+    labs(title = "Count of Storm Class Categories", x = "Storm Category", y = "Count") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
