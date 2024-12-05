@@ -11,6 +11,7 @@ format:
 ```{r}
 library(tidyverse)
 library(ggplot2)
+library(ggcorrplot)
 
 
 hurricane_df <- read.csv("../clean_data/all_hurricane_wo_effects.csv")
@@ -68,4 +69,28 @@ ggplot(hurricane_df, aes(x = Hurricane_Category)) +
     labs(title = "Count of Storm Class Categories", x = "Storm Category", y = "Count") +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
+```
+
+```{r}
+# Select numerical features
+num_features <- hurricane_df %>% select(Max_Winds.kt.., Min_Pressure.mb.., X200.850_hPA.Shear.kt.., Sea_Surface_Temp.Celsius., Humidity...)
+
+# Compute correlation matrix
+correlation_matrix <- cor(num_features, use = "complete.obs")
+print(correlation_matrix)
+
+# Plot the correlation matrix
+ggcorrplot(correlation_matrix, method = "circle", lab = TRUE)
+```
+
+```{r}
+library(GGally)
+
+# Select relevant columns for pairwise analysis
+subset_data <- hurricane_df[, c("Max_Winds.kt..", "Sea_Surface_Temp.Celsius.", "Humidity...", "X200.850_hPA.Shear.kt..")]
+
+# Create pairwise scatter plots
+ggpairs(subset_data, 
+        title = "Pairwise Scatter Plots of Hurricane Data",
+        aes(alpha = 0.6))  # Adjust transparency for better visualization
 ```

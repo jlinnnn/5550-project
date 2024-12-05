@@ -1,0 +1,161 @@
+---
+title: "Hurricane EDA Final"
+author: “Josh Lin”
+format: 
+  html:
+    embed-resources: true
+    code-fold: true
+---
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(forcats)
+library(ggcorrplot)
+library(GGally)
+```
+
+# Initial Visualizations
+
+```{r}
+hurricane_df <- read.csv("../clean_data/all_hurricane_wo_effects.csv")
+
+colnames(hurricane_df)
+
+hurr_cat <- c(
+    "H" = "Hurricane",
+    "MH" = "Major Hurricane",
+    "SS" = "Subtropical Storm",
+    "STS" = "Severe Tropical Storm",
+    "TD" = "Tropical Depression",
+    "TS" = "Tropical Storm"
+)
+
+hurricane_df$Hurricane_Category <- hurr_cat[hurricane_df$Class_Category]
+
+# Function to create density plots
+create_density_plot <- function(data, x_var, fill_color, title, x_label, y_label) {
+    ggplot(data, aes_string(x = x_var)) +
+        geom_density(fill = fill_color, alpha = 0.5) +
+        labs(title = title, x = x_label, y = y_label) +
+        theme_minimal()
+}
+
+# Density plot for Max Winds
+create_density_plot(
+    hurricane_df,
+    "Max_Winds.kt..",
+    "blue",
+    "Density Plot of Maximum Wind Speeds",
+    "Wind Speed (kt)",
+    "Density"
+)
+
+# Density plot for Min Pressure
+create_density_plot(
+    hurricane_df,
+    "Min_Pressure.mb..",
+    "red",
+    "Density Plot of Minimum Pressure",
+    "Pressure (mb)",
+    "Density"
+)
+
+# Density plot for Sea Surface Temp
+create_density_plot(
+    hurricane_df,
+    "Sea_Surface_Temp.Celsius.",
+    "green",
+    "Density Plot of Sea Surface Temperature",
+    "Sea Surface Temperature (°C)",
+    "Density"
+)
+
+hurricane_df$Hurricane_Category <- fct_infreq(hurricane_df$Hurricane_Category) # great to least
+
+# Bar plot for Class Categories
+ggplot(hurricane_df, aes(x = Hurricane_Category, fill = Hurricane_Category)) +
+    geom_bar(color = "black") +
+    scale_fill_manual(values = c(
+        "Hurricane" = "blue",
+        "Major Hurricane" = "red",
+        "Subtropical Storm" = "green",
+        "Severe Tropical Storm" = "purple",
+        "Tropical Depression" = "orange",
+        "Tropical Storm" = "cyan"
+    )) +
+    labs(
+        title = "Count of Storm Class Categories (Ordered by Frequency)",
+        x = "Storm Category",
+        y = "Count",
+        fill = "Storm Category"
+    ) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+# Correlation
+
+```{r}
+num_features <- hurricane_df %>%
+    select(
+        Max_Winds = Max_Winds.kt..,
+        Min_Pressure = Min_Pressure.mb..,
+        Wind_Shear = X200.850_hPA.Shear.kt..,
+        Sea_Surface_Temp = Sea_Surface_Temp.Celsius.,
+        Humidity = Humidity...
+    )
+
+# Compute the correlation matrix
+correlation_matrix <- cor(num_features, use = "pairwise.complete.obs")
+
+
+# Visualize the correlation matrix with better aesthetics
+ggcorrplot(
+    correlation_matrix,
+    method = "circle",
+    lab = TRUE,
+    lab_size = 4,
+    colors = c("blue", "white", "red"),
+    title = "Correlation Matrix of Hurricane Features",
+    ggtheme = theme_minimal()
+)
+```
+> Min_Pressure & Max_Winds 
+> maybe Humidity & Wind Shear
+> maybe SST & Max_Winds
+
+
+# Pairwise Relationships
+
+```{r}
+subset_data <- hurricane_df[, c("Max_Winds.kt..", "Sea_Surface_Temp.Celsius.", "Humidity...", "X200.850_hPA.Shear.kt..")]
+
+# Rename variables for better readability
+colnames(subset_data) <- c(
+    "Max Winds (kt)",
+    "SST (°C)",
+    "Humidity (%)",
+    "Wind Shear (kt)"
+)
+
+# Create pairwise scatter plots
+ggpairs(
+    subset_data,
+    title = "Pairwise Scatter Plots of Hurricane Data",
+    aes(alpha = 0.6),
+    upper = list(continuous = wrap("cor", size = 4)), # Correlation coefficients in upper triangle
+    lower = list(continuous = wrap("smooth", method = "loess", se = FALSE, color = "blue")), # Trendlines in scatter plots
+    diag = list(continuous = wrap("densityDiag", fill = "lightblue", alpha = 0.5)) # Density plots for diagonal
+) +
+    theme_minimal(base_size = 14) + theme(
+        axis.text.y = element_text(size = 10, hjust = 1), # Align y-axis labels better
+        strip.text.y = element_text(size = 7, hjust = 0.5), # Adjust y-axis strip labels
+        plot.title = element_text(hjust = 0.5, size = 16), # Center and enlarge title
+        plot.caption = element_text(size = 10) # Improve caption readability
+    ) +
+    labs(caption = "Scatter plots with trendlines, density distributions, and correlation coefficients.") # Add caption
+
+```
+
+> Max Winds & SST 
